@@ -26,6 +26,9 @@ extern "C" {
 
 #include "ModbusTCPClient.h"
 
+// Petr Stepanov
+#include <Arduino.h>
+
 ModbusTCPClient::ModbusTCPClient(Client& client) :
   ModbusClient(30 * 1000),
   _client(&client)
@@ -38,6 +41,9 @@ ModbusTCPClient::~ModbusTCPClient()
 
 int ModbusTCPClient::begin(IPAddress ip, uint16_t port)
 {
+  // Petr Stepanov
+  SerialUSB.println("hello from ModbusTCPClient::begin()");
+
   modbus_t* mb = modbus_new_tcp(_client, ip, port);
 
   return ModbusClient::begin(mb, MODBUS_TCP_SLAVE);

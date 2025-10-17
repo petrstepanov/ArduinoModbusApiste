@@ -1,6 +1,6 @@
 // Define the repository information in these attributes
-:repository-owner: arduino-libraries
-:repository-name: ArduinoModbus
+:repository-owner: petr-stepanov
+:repository-name: ArduinoModbusApiste
 
 = Modbus Library for Arduino =
 

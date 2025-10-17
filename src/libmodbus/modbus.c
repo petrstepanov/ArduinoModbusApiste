@@ -18,6 +18,10 @@
 #ifndef _MSC_VER
 #include <unistd.h>
 #endif
+
+// Petr Stepanov
+#define ARDUINO
+
 #ifdef ARDUINO
 #include <stdbool.h>
 #include <Arduino.h>
@@ -235,6 +239,9 @@ static int send_msg(modbus_t *ctx, uint8_t *msg, int msg_length)
             printf("[%.2X]", msg[i]);
         printf("\n");
     }
+
+    // Petr Stepanov
+    SerialUSB.println("hello from send_msg()");
 
     /* In recovery mode, the write command will be issued until to be
        successful! Disabled by default. */
