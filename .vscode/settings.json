@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.gp": "gnuplot",
+        "print": "cpp",
+        "arduinowrapper.h": "c"
+    }
+}

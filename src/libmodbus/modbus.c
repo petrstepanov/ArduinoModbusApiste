@@ -19,9 +19,6 @@
 #include <unistd.h>
 #endif
 
-// Petr Stepanov
-#define ARDUINO
-
 #ifdef ARDUINO
 #include <stdbool.h>
 #include <Arduino.h>
@@ -58,6 +55,9 @@
 
 #include "modbus.h"
 #include "modbus-private.h"
+
+// Petr Stepanov
+#include "arduinowrapper.h"
 
 /* Internal use */
 #define MSG_LENGTH_UNDEFINED -1
@@ -241,7 +241,10 @@ static int send_msg(modbus_t *ctx, uint8_t *msg, int msg_length)
     }
 
     // Petr Stepanov
-    SerialUSB.println("hello from send_msg()");
+    // Wrapper call to SerialUSB
+    PrintWrapper h = create_wrapper();
+    call_serial(h, "hello from send_msg()");
+    free_wrapper(h);
 
     /* In recovery mode, the write command will be issued until to be
        successful! Disabled by default. */
