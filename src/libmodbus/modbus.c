@@ -234,16 +234,16 @@ static int send_msg(modbus_t *ctx, uint8_t *msg, int msg_length)
 
     msg_length = ctx->backend->send_msg_pre(msg, msg_length);
 
-    if (ctx->debug) {
-        for (i = 0; i < msg_length; i++)
-            printf("[%.2X]", msg[i]);
-        printf("\n");
-    }
+    // Petr Stepanov - old debug code
+    // if (ctx->debug) {
+    //     for (i = 0; i < msg_length; i++)
+    //         printf("[%.2X]", msg[i]);
+    //     printf("\n");
+    // }
 
-    // Petr Stepanov
-    // Wrapper call to SerialUSB
+    // Petr Stepanov - new debug code
     PrintWrapper h = create_wrapper();
-    call_serial(h, "hello from send_msg()");
+    call_serial_msg(h, msg, msg_length);
     free_wrapper(h);
 
     /* In recovery mode, the write command will be issued until to be

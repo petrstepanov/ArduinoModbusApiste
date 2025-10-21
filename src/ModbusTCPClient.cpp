@@ -42,7 +42,7 @@ ModbusTCPClient::~ModbusTCPClient()
 int ModbusTCPClient::begin(IPAddress ip, uint16_t port)
 {
   // Petr Stepanov
-  SerialUSB.println("hello from ModbusTCPClient::begin()");
+  // SerialUSB.println("hello from ModbusTCPClient::begin()");
 
   modbus_t* mb = modbus_new_tcp(_client, ip, port);
 

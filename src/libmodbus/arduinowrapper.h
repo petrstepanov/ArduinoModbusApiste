@@ -1,6 +1,8 @@
 #ifndef ARDUINOWRAPPER_H
 #define ARDUINOWRAPPER_H
 
+#include "stdint.h" // for uint8_t
+
 // #ifdef __cplusplus
 //     #include <Arduino.h>
 // #endif
@@ -22,6 +24,8 @@ extern "C" {
     PrintWrapper create_wrapper();
     void    free_wrapper(PrintWrapper);
     void    call_serial(PrintWrapper, const char *);
+    void    call_serial_int(PrintWrapper, uint8_t);
+    void    call_serial_msg(PrintWrapper p, uint8_t *msg, int msg_length);
 
 #ifdef __cplusplus
 }

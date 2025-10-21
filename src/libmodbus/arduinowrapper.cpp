@@ -20,4 +20,17 @@ extern "C" {
     void call_serial(PrintWrapper p, const char * str) {
         ((Print *)p)->println(str); 
     }
+
+    void call_serial_int(PrintWrapper p, uint8_t i) {
+        ((Print *)p)->println(i);
+    }
+
+    void call_serial_msg(PrintWrapper p, uint8_t *msg, int msg_length){
+        for (int i = 0; i < msg_length; i++){
+            ((Print *)p)->print("[");
+            ((Print *)p)->print((int)msg[i], HEX);
+            ((Print *)p)->print("] ");
+        }
+        ((Print *)p)->println();
+    }
 }
